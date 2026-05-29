@@ -26,4 +26,14 @@ public class EntidadFinancieraServices implements IEntidadFinanciera {
                 .toList();
         return entidades;
     }
+
+    @Override
+    public void save(EntidadFinancieraDTO entidadFinancieraDTO) {
+        EntidadFinanciera entidad = EntidadFinanciera.builder()
+                        .nombre(entidadFinancieraDTO.getNombre())
+                        .tipoEntidad(entidadFinancieraDTO.getTipoEntidad())
+                        .build();
+
+        entidadRepository.save(entidad);
+    }
 }

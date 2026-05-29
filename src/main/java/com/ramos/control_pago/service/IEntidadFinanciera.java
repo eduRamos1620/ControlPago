@@ -9,4 +9,6 @@ import java.util.List;
 public interface IEntidadFinanciera {
 
     List<EntidadFinancieraDTO> findByEntidadEstatusActivo();
+
+    void save(EntidadFinancieraDTO entidadFinancieraDTO);
 }

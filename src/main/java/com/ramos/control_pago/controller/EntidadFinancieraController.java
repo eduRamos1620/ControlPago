@@ -5,9 +5,7 @@ import com.ramos.control_pago.enums.EstatusEnum;
 import com.ramos.control_pago.service.impl.EntidadFinancieraServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,4 +22,13 @@ public class EntidadFinancieraController {
         return ResponseEntity.ok(resultado);
     }
 
+    @PostMapping("/save")
+    public ResponseEntity<?> save(@RequestBody EntidadFinancieraDTO entidadFinancieraDTO) {
+        try {
+            servicesEntidad.save(entidadFinancieraDTO);
+            return ResponseEntity.ok("Entidad financiera guardada exitosamente");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error al guardar la entidad financiera: " + e.getMessage());
+        }
+    }
 }
